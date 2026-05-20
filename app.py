@@ -732,7 +732,7 @@ if input_mode == "Voice":
                     speech_text
                 )
 
-                st.rerun()
+                
 
         except Exception as e:
 
