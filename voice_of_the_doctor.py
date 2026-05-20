@@ -5,7 +5,7 @@ import os
 import platform
 import subprocess
 from gtts import gTTS
-import elevenlabs
+
 
 # API KEY
 ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")
