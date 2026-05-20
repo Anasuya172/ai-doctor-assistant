@@ -59,10 +59,6 @@ def transcribe_with_groq(stt_model, audio_filepath, GROQ_API_KEY):
     return transcription.text
 
 
-# CALL FUNCTION
-text = transcribe_with_groq(stt_model, audio_filepath, GROQ_API_KEY)
-print("📝 Transcription:", text)
-
 
 
 
