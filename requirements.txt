@@ -15,7 +15,6 @@ typing-inspection==0.4.2
 typing_extensions==4.15.0
 streamlit-mic-recorder
 gtts
-elevenlabs
 python-dotenv
 reportlab
 Pillow
