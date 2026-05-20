@@ -314,51 +314,6 @@ for i, msg in enumerate(st.session_state.messages):
 
                 st.rerun()
 
-        # # Diet chart
-        # if msg["role"] == "assistant" and "diet_tip" in msg:
-
-        #     if st.button(
-        #         "🥗 View Diet Chart",
-        #         key=f"diet_{i}"
-        #     ):
-
-        #         st.session_state[f"show_diet_{i}"] = True
-
-        #     if st.session_state.get(
-        #         f"show_diet_{i}",
-        #         False
-        #     ):
-
-        #         st.success(msg["diet_tip"])
-
-        #         if st.button(
-        #             "🔊 Generate Diet Audio",
-        #             key=f"diet_audio_{i}"
-        #         ):
-
-        #             diet_audio = f"diet_audio_{i}.mp3"
-
-        #             text_to_speech_with_gtts(
-        #                 msg["diet_tip"],
-        #                 diet_audio
-        #             )
-
-        #             st.session_state[
-        #                 f"diet_audio_file_{i}"
-        #             ] = diet_audio
-
-        #             st.rerun()
-
-        #         if st.session_state.get(
-        #             f"diet_audio_file_{i}"
-        #         ):
-
-        #             st.audio(
-        #                 st.session_state[
-        #                     f"diet_audio_file_{i}"
-        #                 ]
-        #             )
-
         # Nearby hospital after old responses too
         if msg["role"] == "assistant":
 
@@ -641,7 +596,19 @@ Calling emergency contact now...
 
                     time.sleep(0.05)
 
-                st.audio(output_audio)
+                # ===============================================
+                # AUTO PLAY AUDIO
+                # ===============================================
+
+                with open(output_audio, "rb") as audio_file:
+
+                    audio_bytes = audio_file.read()
+
+                st.audio(
+                    audio_bytes,
+                    format="audio/mp3",
+                    autoplay=True
+                )
 
                 st.markdown("---")
 
@@ -760,7 +727,3 @@ if input_mode == "Voice":
         except Exception as e:
 
             st.error(f"Voice Error: {str(e)}")
-
-
-
-
