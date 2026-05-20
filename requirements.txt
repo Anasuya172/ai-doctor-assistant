@@ -18,3 +18,4 @@ gtts
 python-dotenv
 reportlab
 Pillow
+pydub
