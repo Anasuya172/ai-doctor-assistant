@@ -7,6 +7,7 @@ load_dotenv()
 import os
 import time
 import streamlit as st
+import base64
 from streamlit_mic_recorder import mic_recorder
 
 from brain_of_the_doctor import (
@@ -596,18 +597,27 @@ Calling emergency contact now...
 
                     time.sleep(0.05)
 
-                # ===============================================
                 # AUTO PLAY AUDIO
-                # ===============================================
-
                 with open(output_audio, "rb") as audio_file:
 
                     audio_bytes = audio_file.read()
 
-                st.audio(
-                    audio_bytes,
-                    format="audio/mp3",
-                    autoplay=True
+                audio_base64 = base64.b64encode(
+                    audio_bytes
+                ).decode()
+
+                audio_html = f"""
+                <audio autoplay>
+                    <source
+                        src="data:audio/mp3;base64,{audio_base64}"
+                        type="audio/mp3"
+                    >
+                </audio>
+                """
+
+                st.markdown(
+                    audio_html,
+                    unsafe_allow_html=True
                 )
 
                 st.markdown("---")
