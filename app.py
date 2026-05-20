@@ -607,7 +607,7 @@ Calling emergency contact now...
                 ).decode()
 
                 audio_html = f"""
-                <audio autoplay>
+                <audio autoplay controls>
                     <source
                         src="data:audio/mp3;base64,{audio_base64}"
                         type="audio/mp3"
